@@ -1,0 +1,47 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+
+<div class="index">
+    <header class="bg-dark py-5" style="background-image: url('/static/header.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5 text-black">
+                        <h1 class="display-5 fw-bolder mb-2">Deja que tus uñas hablen por ti!</h1>
+                        <p class="lead mb-4">Nosotros nos encargamos de eso</p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/agendar">Atencion con cita previa!</a>
+                            <a class="btn btn-outline-light btn-lg px-4" href="/registrarse">Crea una cuenta y accede a promociones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-4 image-container">
+                <img src="image1.jpg" class="img-fluid" alt="Image 1">
+                <p class="mt-2">Description for Image 1</p>
+            </div>
+            <div class="col-md-4 mb-4 image-container">
+                <img src="image2.jpg" class="img-fluid" alt="Image 2">
+                <p class="mt-2">Description for Image 2</p>
+            </div>
+            <div class="col-md-4 mb-4 image-container">
+                <img src="image3.jpg" class="img-fluid" alt="Image 3">
+                <p class="mt-2">Description for Image 3</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

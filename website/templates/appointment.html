@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="/static/appt.css">
+{% endblock %}
+{%block title %}Agendar Cita{% endblock %}
+
+{% block content %}
+<div class="appt">
+    <h1>Agende su cita</h1>
+    <form method="POST">
+    {% if not current_user.is_authenticated %}
+    <h2>Para reservar por favor introduzca su nombre y seleccione la fecha y hora.</h2>
+    </br>
+    <input type="text" id="name" name="name"placeholder="Nombre">
+    </br>
+    {% endif %}
+    <input type="text" id="datetime-picker" name="datetime-picker" placeholder="Selecciona su hora y fecha">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script> <!-- Spanish locale file -->
+    <script>
+      var mostRecentEndTime = "{{ default_date }}";
+      
+      var fp = flatpickr("#datetime-picker", {
+          enableTime: true,
+          dateFormat: "Y-m-d H", // Format without minutes
+          minDate: "today",
+          minTime: "09:00",
+          maxTime: "20:00",
+          time_24hr: true,
+          defaultDate: mostRecentEndTime,
+          locale: "es", // Set locale to Spanish
+          onChange: function(selectedDates, dateStr, instance) {
+              if (selectedDates.length > 0) {
+                  var selectedDate = selectedDates[0];
+                  var formattedDate = selectedDate.toISOString().slice(0, 19).replace("T", " ");
+                  fp.set("minTime", formattedDate);
+              }
+          }
+      });
+  </script>
+  
+    <br/>
+    <button type="submit" class="btn btn-primary">Agendar</button>
+    </form>
+  </div>
+{% endblock %}
